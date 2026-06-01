@@ -8,7 +8,6 @@ library(tidytext)
 library(here)
 library(glue)
 
-# Mapa de obras
 obras_gutenberg <- tribble(
   ~pensador_id, ~nombre,           ~obra,                           ~gutenberg_id, ~idioma_original,
   "PT001",      "Karl Marx",       "The Communist Manifesto",       61,            "de",
@@ -22,26 +21,21 @@ obras_gutenberg <- tribble(
   "PT005",      "Nietzsche",       "Beyond Good and Evil",          4363,          "de"
 )
 
-# Función de descarga
 descargar_obra <- function(pensador_id, nombre, obra, gutenberg_id, idioma_original) {
   message(glue("Descargando: {obra} ({gutenberg_id})..."))
-
   tryCatch({
     texto_raw <- gutenberg_download(
       gutenberg_id,
       mirror = "http://mirrors.xmission.com/gutenberg/"
     )
-
     texto_cadena <- texto_raw |>
       pull(text) |>
       paste(collapse = " ") |>
       str_squish()
-
-    palabras    <- str_split(texto_cadena, "\s+")[[1]]
+    palabras    <- strsplit(texto_cadena, " ")[[1]]
     n_palabras  <- length(palabras)
     bloque_size <- 500
     n_bloques   <- ceiling(n_palabras / bloque_size)
-
     tibble(
       pensador_id     = pensador_id,
       obra            = obra,
@@ -56,20 +50,17 @@ descargar_obra <- function(pensador_id, nombre, obra, gutenberg_id, idioma_origi
       fecha_descarga  = Sys.Date(),
       fuente_url      = glue("https://www.gutenberg.org/ebooks/{gutenberg_id}")
     )
-
   }, error = function(e) {
     warning(glue("Error descargando {gutenberg_id}: {e$message}"))
     NULL
   })
 }
 
-# Ejecutar pipeline
 corpus_raw <- obras_gutenberg |>
   pmap(descargar_obra) |>
   compact() |>
   bind_rows()
 
-# Guardar
 saveRDS(corpus_raw, here("data", "processed", "corpus_raw.rds"))
 write_csv(
   corpus_raw |> select(-texto_cadena),
@@ -77,4 +68,3 @@ write_csv(
 )
 
 message(glue("✅ Corpus: {nrow(corpus_raw)} segmentos de {n_distinct(corpus_raw$pensador_id)} pensadores"))
-

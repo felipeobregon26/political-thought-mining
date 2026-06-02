@@ -1,0 +1,31 @@
+pensador_id,topico,gamma,etiqueta
+PT001,3,0.9950696866675497,Libertad individual y derechos
+PT001,2,0.0014275832634259055,Economia y trabajo
+PT001,6,0.001206822964957982,Moral y filosofia politica
+PT001,1,8.536064874093045e-4,Estado y poder soberano
+PT001,4,7.65302368022135e-4,Revolucion y cambio social
+PT001,5,6.769982486349655e-4,Nacion e identidad
+PT002,6,0.995436839176405,Moral y filosofia politica
+PT002,2,0.0013514587805071947,Economia y trabajo
+PT002,1,9.69870418952222e-4,Estado y poder soberano
+PT002,5,9.69870418952222e-4,Nacion e identidad
+PT002,3,6.35980602591621e-4,Libertad individual y derechos
+PT002,4,6.35980602591621e-4,Revolucion y cambio social
+PT003,2,0.7147831169903869,Economia y trabajo
+PT003,5,0.2176518053993608,Nacion e identidad
+PT003,6,0.06575427761787672,Moral y filosofia politica
+PT003,3,8.03741049247406e-4,Libertad individual y derechos
+PT003,1,6.989052602151357e-4,Estado y poder soberano
+PT003,4,3.0815368291303713e-4,Revolucion y cambio social
+PT004,1,0.8502915507868853,Estado y poder soberano
+PT004,5,0.14870187217843017,Nacion e identidad
+PT004,6,4.4706282466909123e-4,Moral y filosofia politica
+PT004,2,2.660435214288457e-4,Economia y trabajo
+PT004,4,1.590775695141552e-4,Revolucion y cambio social
+PT004,3,1.3439311907230352e-4,Libertad individual y derechos
+PT005,4,0.9967604752970607,Revolucion y cambio social
+PT005,6,8.505315822388993e-4,Moral y filosofia politica
+PT005,2,8.317698561601001e-4,Economia y trabajo
+PT005,3,6.441525953721076e-4,Libertad individual y derechos
+PT005,5,6.253908692933083e-4,Nacion e identidad
+PT005,1,2.876797998749218e-4,Estado y poder soberano
